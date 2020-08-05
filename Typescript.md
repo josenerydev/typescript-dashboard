@@ -45,17 +45,16 @@ Para entender o que o compilador do TypeScript faz, copie o código e salve em u
 O compilador irá converter o código TypeScript em JavaScript puro. Na pasta onde o arquivo foi salvo deve aparecer um novo arquivo `index.js`.
 
 ```js
-"use strict";
+'use strict';
 exports.__esModule = true;
 exports.fatorial = void 0;
 /**
-* Implementação recursiva do fatorial de uma número
-* @param num Número que o fatorial será calculado
-*/
+ * Implementação recursiva do fatorial de uma número
+ * @param num Número que o fatorial será calculado
+ */
 exports.fatorial = function (num) {
-    if (num <= 1)
-        return 1;
-    return num * exports.fatorial(num - 1);
+  if (num <= 1) return 1;
+  return num * exports.fatorial(num - 1);
 };
 console.log(exports.fatorial(6));
 ```
@@ -80,9 +79,8 @@ Desta forma, temos um código muito próximo da implementação inicial, mas par
  * @param num Número que o fatorial será calculado
  */
 export var fatorial = function (num) {
-    if (num <= 1)
-        return 1;
-    return num * fatorial(num - 1);
+  if (num <= 1) return 1;
+  return num * fatorial(num - 1);
 };
 console.log(fatorial(6));
 ```
@@ -106,16 +104,16 @@ Como foi mostrado, é possivel converter um arquivo TypeScript em JavaScript uti
 Listar todas as opções pode se tornar rapidamente inviável. Para solicionar o problema podemos criar um arquivo `tsconfig.json` na raiz do nosso projeto para definir todas as opções do compilador:
 
 ```json
-  {
-    "compilerOptions": {
-      "module": "commonjs", // Voltando para CommonJS para poder executar com o Node
-      "target": "ES6",
-      "outDir": "build", // Definimos uma pasta onde o código gerado será salvo
-      "declaration": true, // Extrair definição de tipos
-      "sourceMap": true // Gera o source map que permite depurar o JavaScript gerado como se fosse o TypeScript original!!!
-    },
-    "include": ["src"] // Compila todos os arquivos da pasta `src`
-  }
+{
+  "compilerOptions": {
+    "module": "commonjs", // Voltando para CommonJS para poder executar com o Node
+    "target": "ES6",
+    "outDir": "build", // Definimos uma pasta onde o código gerado será salvo
+    "declaration": true, // Extrair definição de tipos
+    "sourceMap": true // Gera o source map que permite depurar o JavaScript gerado como se fosse o TypeScript original!!!
+  },
+  "include": ["src"] // Compila todos os arquivos da pasta `src`
+}
 ```
 
 Agora para compilar todos os arquivos dentro da pasta `src` basta executar o comando:
@@ -183,7 +181,7 @@ const data: [number, string, string, number] = [
   1,
   'John Doe',
   'Juiz de Fora',
-  1990
+  1990,
 ];
 ```
 
@@ -202,7 +200,7 @@ address = {
   street: 'Fake address',
   number: 42,
   // Opicional
-  complement: '...'
+  complement: '...',
 };
 ```
 
@@ -216,7 +214,7 @@ let address: { street: string; number: number; complement?: string };
 address = {
   number: 42,
   // Opicional
-  complement: '...'
+  complement: '...',
 };
 ```
 
@@ -240,10 +238,10 @@ interface Person {
   email: string;
 }
 
-let contact: { name: string; email: string } = {
+let contact: { name: string, email: string } = {
   name: 'John',
-  email: 'example@email.com'
-}
+  email: 'example@email.com',
+};
 
 const person: Person = contact;
 ```
@@ -253,19 +251,19 @@ const person: Person = contact;
 Até agora trabalhamos apenas com variáveis que só podiam assumir um tipo de valor, mas em vários casos você terá que lidar com variáveis que podem ter um tipo de valor ou outro. Com TypeScript esse tipo de variável pode ser definido da seguinte forma:
 
 ```ts
-  interface ContactWithEmail {
-    name: string;
-    email: string;
-  }
+interface ContactWithEmail {
+  name: string;
+  email: string;
+}
 
-  interface ContactWithPhone {
-    name: string;
-    phone: string;
-  }
+interface ContactWithPhone {
+  name: string;
+  phone: string;
+}
 
-  const contact: ContactWithEmail | ContactWithPhone = {
-    name: 'John Doe'
-  };
+const contact: ContactWithEmail | ContactWithPhone = {
+  name: 'John Doe',
+};
 ```
 
 Neste exemplo, a variável `contact` pode ser tanto do tipo `ContactWithEmail` quanto `ContactWithPhone`. Note que neste caso o TypeScript só permite acessar dados que existem na intersecção de todos os tipos.
@@ -273,11 +271,11 @@ Neste exemplo, a variável `contact` pode ser tanto do tipo `ContactWithEmail` q
 Além de definir uma variável podendo ter um tipo ou outro, também podemos definir uma variável que possuí dois tipos simultaneamente:
 
 ```ts
-  const completeContact: ContactWithEmail & ContactWithPhone = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '(32) 99999-9999'
-  };
+const completeContact: ContactWithEmail & ContactWithPhone = {
+  name: 'John Doe',
+  email: 'john@example.com',
+  phone: '(32) 99999-9999',
+};
 ```
 
 Neste caso, a variável `completeContact` é do tipo `ContactWithEmail` E `ContactWithPhone` simultaneamente, e pode acessar todas as propriedades.
@@ -285,8 +283,8 @@ Neste caso, a variável `completeContact` é do tipo `ContactWithEmail` E `Conta
 Assim como as `interface`s podem ser usadas definir um tipo composto de várias chaves, `types` podem ser definidos com a união ou intersecção de outros tipos:
 
 ```ts
-  type BaseContact = ContactWithEmail | ContactWithPhone;
-  type FullContact = ContactWithEmail & ContactWithPhone;
+type BaseContact = ContactWithEmail | ContactWithPhone;
+type FullContact = ContactWithEmail & ContactWithPhone;
 ```
 
 ### Funções
@@ -294,13 +292,13 @@ Assim como as `interface`s podem ser usadas definir um tipo composto de várias 
 A declaração de tipos em funções segue o mesmo padrão que a declaração de tipos simples. Além dos tipo dos parâmetros, também podemos definir o tipo de retorno da função da seguinte forma:
 
 ```ts
-  function soma(a: number, b: number): number {
-    return a + b;
-  }
+function soma(a: number, b: number): number {
+  return a + b;
+}
 
-  const soma = (a: number, b: number): number => {
-    return a + b;
-  }
+const soma = (a: number, b: number): number => {
+  return a + b;
+};
 ```
 
 Assim como com as outrar variáveis, o TypeScript geralmente consegui inferir o tipo de retorno das funções.
@@ -316,9 +314,9 @@ let fun: (a: number, b: number) => number;
 O TypeScript tem uma peculiaridade em relação à passagem de objetos como parâmetros de funções: Enquanto nos exemplos anteriores não podíamos definir chaves que não existiam no tipo do objeto, as funções definem apenas os campos que são obrigatórios no objeto.
 
 ```ts
-const sendEmail = (person: {email: string}) => {
+const sendEmail = (person: { email: string }) => {
   ///
-}
+};
 
 sendEmail(completeContact);
 ```

@@ -1,48 +1,48 @@
-import React from "react";
+import React from 'react';
 // react plugin for creating charts
-import ChartistGraph from "react-chartist";
+import ChartistGraph from 'react-chartist';
 // @material-ui/core
-import withStyles from "@material-ui/core/styles/withStyles";
-import Icon from "@material-ui/core/Icon";
+import withStyles from '@material-ui/core/styles/withStyles';
+import Icon from '@material-ui/core/Icon';
 // @material-ui/icons
-import Store from "@material-ui/icons/Store";
-import Warning from "@material-ui/icons/Warning";
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Accessibility from "@material-ui/icons/Accessibility";
-import BugReport from "@material-ui/icons/BugReport";
-import Code from "@material-ui/icons/Code";
-import Cloud from "@material-ui/icons/Cloud";
+import Store from '@material-ui/icons/Store';
+import Warning from '@material-ui/icons/Warning';
+import DateRange from '@material-ui/icons/DateRange';
+import LocalOffer from '@material-ui/icons/LocalOffer';
+import Update from '@material-ui/icons/Update';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import AccessTime from '@material-ui/icons/AccessTime';
+import Accessibility from '@material-ui/icons/Accessibility';
+import BugReport from '@material-ui/icons/BugReport';
+import Code from '@material-ui/icons/Code';
+import Cloud from '@material-ui/icons/Cloud';
 import CheckIcon from '@material-ui/icons/Check';
 // core components
-import GridItem from "../../components/Grid/GridItem";
-import GridContainer from "../../components/Grid/GridContainer";
-import Table from "../../components/Table/Table";
-import Tasks from "../../components/Tasks/Tasks";
-import CustomTabs from "../../components/CustomTabs/CustomTabs";
-import Danger from "../../components/Typography/Danger";
-import Card from "../../components/Card/Card";
+import GridItem from '../../components/Grid/GridItem';
+import GridContainer from '../../components/Grid/GridContainer';
+import Table from '../../components/Table/Table';
+import Tasks from '../../components/Tasks/Tasks';
+import CustomTabs from '../../components/CustomTabs/CustomTabs';
+import Danger from '../../components/Typography/Danger';
+import Card from '../../components/Card/Card';
 import Button from '../../components/CustomButtons/Button';
-import CardHeader from "../../components/Card/CardHeader";
-import CardIcon from "../../components/Card/CardIcon";
-import CardBody from "../../components/Card/CardBody";
-import CardFooter from "../../components/Card/CardFooter";
+import CardHeader from '../../components/Card/CardHeader';
+import CardIcon from '../../components/Card/CardIcon';
+import CardBody from '../../components/Card/CardBody';
+import CardFooter from '../../components/Card/CardFooter';
 
-import { bugs, website, server } from "../../variables/general";
+import { bugs, website, server } from '../../variables/general';
 
 import {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart,
-} from "../../variables/charts";
+} from '../../variables/charts';
 
-import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle";
-import CustomInput from "../../components/CustomInput/CustomInput";
-import { InputLabel } from "@material-ui/core";
-import Success from "../../components/Typography/Success";
+import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dashboardStyle';
+import CustomInput from '../../components/CustomInput/CustomInput';
+import { InputLabel } from '@material-ui/core';
+import Success from '../../components/Typography/Success';
 
 interface Props {
   classes: any;
@@ -52,7 +52,7 @@ interface State {
   value: number;
   creatingMessage: boolean;
   messageSuccess: boolean;
-  messageFailed: boolean
+  messageFailed: boolean;
 }
 
 class Dashboard extends React.Component<Props, State> {
@@ -171,7 +171,7 @@ class Dashboard extends React.Component<Props, State> {
                 <p className={classes.cardCategory}>
                   <span className={classes.successText}>
                     <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{" "}
+                  </span>{' '}
                   increase in today sales.
                 </p>
               </CardBody>
@@ -234,7 +234,7 @@ class Dashboard extends React.Component<Props, State> {
               headerColor="primary"
               tabs={[
                 {
-                  tabName: "Bugs",
+                  tabName: 'Bugs',
                   tabIcon: BugReport,
                   tabContent: (
                     <Tasks
@@ -245,7 +245,7 @@ class Dashboard extends React.Component<Props, State> {
                   ),
                 },
                 {
-                  tabName: "Website",
+                  tabName: 'Website',
                   tabIcon: Code,
                   tabContent: (
                     <Tasks
@@ -256,7 +256,7 @@ class Dashboard extends React.Component<Props, State> {
                   ),
                 },
                 {
-                  tabName: "Server",
+                  tabName: 'Server',
                   tabIcon: Cloud,
                   tabContent: (
                     <Tasks
@@ -280,12 +280,12 @@ class Dashboard extends React.Component<Props, State> {
               <CardBody>
                 <Table
                   tableHeaderColor="warning"
-                  tableHead={["ID", "Name", "Salary", "Country"]}
+                  tableHead={['ID', 'Name', 'Salary', 'Country']}
                   tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea, South"],
+                    ['1', 'Dakota Rice', '$36,738', 'Niger'],
+                    ['2', 'Minerva Hooper', '$23,789', 'Curaçao'],
+                    ['3', 'Sage Rodriguez', '$56,142', 'Netherlands'],
+                    ['4', 'Philip Chaney', '$38,735', 'Korea, South'],
                   ]}
                 />
               </CardBody>
@@ -294,14 +294,16 @@ class Dashboard extends React.Component<Props, State> {
         </GridContainer>
         <GridContainer>
           <GridItem xs={12}>
-          <Card>
+            <Card>
               <CardHeader color="success">
                 <div className={classes.messages}>
-                  <h4 className={classes.cardTitleWhite}>Mensagens Positivas</h4>
+                  <h4 className={classes.cardTitleWhite}>
+                    Mensagens Positivas
+                  </h4>
                   {!creatingMessage && (
-                    <Button 
-                      color="transparent" 
-                      variant="outlined" 
+                    <Button
+                      color="transparent"
+                      variant="outlined"
                       onClick={() => this.setState({ creatingMessage: true })}
                     >
                       Enviar Mensagem
@@ -310,50 +312,54 @@ class Dashboard extends React.Component<Props, State> {
                 </div>
               </CardHeader>
               <CardBody>
-                {!creatingMessage 
-                  ? <React.Fragment>
-                      <h5 className={classes.cardTitle}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac est pulvinar, tempor turpis id, 
-                        vehicula magna.
-                      </h5>
-                      <p className={classes.cardCategory}>
-                        Jane Doe
-                      </p>
-                    </React.Fragment> 
-                  : <React.Fragment>
-                      <GridContainer>
-                        <GridItem xs={12}>
-                          <CustomInput
-                            labelText="Nome"
-                            id="name"
-                            color="success"
-                            formControlProps={{
-                              fullWidth: true
-                            }}
-                          />
-                        </GridItem>
-                      </GridContainer>
-                      <GridContainer>
-                        <GridItem xs={12}>
+                {!creatingMessage ? (
+                  <React.Fragment>
+                    <h5 className={classes.cardTitle}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Cras ac est pulvinar, tempor turpis id, vehicula magna.
+                    </h5>
+                    <p className={classes.cardCategory}>Jane Doe</p>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <GridContainer>
+                      <GridItem xs={12}>
+                        <CustomInput
+                          labelText="Nome"
+                          id="name"
+                          color="success"
+                          formControlProps={{
+                            fullWidth: true,
+                          }}
+                        />
+                      </GridItem>
+                    </GridContainer>
+                    <GridContainer>
+                      <GridItem xs={12}>
                         <CustomInput
                           labelText="Mensagem"
                           id="message"
                           formControlProps={{
-                            fullWidth: true
+                            fullWidth: true,
                           }}
                           inputProps={{
                             multiline: true,
-                            rows: 5
+                            rows: 5,
                           }}
                         />
-                        </GridItem>
-                      </GridContainer>
-                    </React.Fragment>
-                }
+                      </GridItem>
+                    </GridContainer>
+                  </React.Fragment>
+                )}
               </CardBody>
               {creatingMessage && (
                 <CardFooter>
-                  <Button color="danger" onClick={() => this.setState({ creatingMessage: false })} >Cancelar</Button>
+                  <Button
+                    color="danger"
+                    onClick={() => this.setState({ creatingMessage: false })}
+                  >
+                    Cancelar
+                  </Button>
                   <Button color="success">Enviar Mensagem</Button>
                 </CardFooter>
               )}

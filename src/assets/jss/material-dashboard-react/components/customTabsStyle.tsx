@@ -5,21 +5,21 @@ const customTabsStyle = createStyles({
   cardTitle: {
     float: 'left',
     padding: '10px 10px 10px 0px',
-    lineHeight: '24px'
+    lineHeight: '24px',
   },
   cardTitleRTL: {
     float: 'right',
-    padding: '10px 0px 10px 10px !important'
+    padding: '10px 0px 10px 10px !important',
   },
   displayNone: {
-    display: 'none !important'
+    display: 'none !important',
   },
   tabsRoot: {
     minHeight: 'unset !important',
     overflowX: 'visible',
     '& $tabRootButton': {
-      fontSize: '0.875rem'
-    }
+      fontSize: '0.875rem',
+    },
   },
   tabRootButton: {
     minHeight: 'unset !important',
@@ -35,19 +35,19 @@ const customTabsStyle = createStyles({
     color: whiteColor + ' !important',
     marginLeft: '4px',
     '&:last-child': {
-      marginLeft: '0px'
-    }
+      marginLeft: '0px',
+    },
   },
   tabLabelContainer: {
-    padding: '0px'
+    padding: '0px',
   },
   tabLabel: {
     fontWeight: '500',
-    fontSize: '12px'
+    fontSize: '12px',
   },
   tabSelected: {
     backgroundColor: 'rgba(' + hexToRgb(whiteColor) + ', 0.2)',
-    transition: '0.2s background-color 0.1s'
+    transition: '0.2s background-color 0.1s',
   },
   tabWrapper: {
     display: 'inline-block',
@@ -59,9 +59,9 @@ const customTabsStyle = createStyles({
     maxHeight: 'unset !important',
     '& > svg,& > .material-icons': {
       verticalAlign: 'middle',
-      margin: '-1px 5px 0 0'
-    }
-  }
+      margin: '-1px 5px 0 0',
+    },
+  },
 });
 
 export default customTabsStyle;

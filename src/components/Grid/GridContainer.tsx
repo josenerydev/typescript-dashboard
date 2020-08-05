@@ -7,8 +7,8 @@ import { createStyles } from '@material-ui/core';
 const style = createStyles({
   grid: {
     margin: '0 -15px !important',
-    width: 'unset'
-  }
+    width: 'unset',
+  },
 });
 
 function GridContainer(props: any) {

@@ -18,11 +18,11 @@ function Snackbar({ ...props }: any) {
     icon,
     place,
     open,
-    rtlActive
+    rtlActive,
   } = props;
   let action: any[] = [];
   const messageClasses = classNames({
-    [classes.iconMessage]: icon !== undefined
+    [classes.iconMessage]: icon !== undefined,
   });
   if (close !== undefined) {
     action = [
@@ -35,7 +35,7 @@ function Snackbar({ ...props }: any) {
         onClick={() => props.closeNotification()}
       >
         <Close className={classes.close} />
-      </IconButton>
+      </IconButton>,
     ];
   }
   return (
@@ -46,8 +46,8 @@ function Snackbar({ ...props }: any) {
           place.indexOf('l') !== -1
             ? 'left'
             : place.indexOf('c') !== -1
-              ? 'center'
-              : 'right'
+            ? 'center'
+            : 'right',
       }}
       open={open}
       message={
@@ -61,8 +61,8 @@ function Snackbar({ ...props }: any) {
         classes: {
           root: classes.root + ' ' + classes[color],
           message: classes.message,
-          action: classNames({ [classes.actionRTL]: rtlActive })
-        }
+          action: classNames({ [classes.actionRTL]: rtlActive }),
+        },
       }}
     />
   );

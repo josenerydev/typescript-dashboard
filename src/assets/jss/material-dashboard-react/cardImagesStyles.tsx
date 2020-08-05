@@ -4,12 +4,12 @@ const cardImagesStyles = createStyles({
   cardImgTop: {
     width: '100%',
     borderTopLeftRadius: 'calc(.25rem - 1px)',
-    borderTopRightRadius: 'calc(.25rem - 1px)'
+    borderTopRightRadius: 'calc(.25rem - 1px)',
   },
   cardImgBottom: {
     width: '100%',
     borderBottomRightRadius: 'calc(.25rem - 1px)',
-    borderBottomLeftRadius: 'calc(.25rem - 1px)'
+    borderBottomLeftRadius: 'calc(.25rem - 1px)',
   },
   cardImgOverlay: {
     position: 'absolute',
@@ -17,12 +17,12 @@ const cardImagesStyles = createStyles({
     right: '0',
     bottom: '0',
     left: '0',
-    padding: '1.25rem'
+    padding: '1.25rem',
   },
   cardImg: {
     width: '100%',
-    borderRadius: 'calc(.25rem - 1px)'
-  }
+    borderRadius: 'calc(.25rem - 1px)',
+  },
 });
 
 export default cardImagesStyles;

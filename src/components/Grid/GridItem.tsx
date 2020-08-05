@@ -6,8 +6,8 @@ import { createStyles } from '@material-ui/core';
 
 const style = createStyles({
   grid: {
-    padding: '0 15px !important'
-  }
+    padding: '0 15px !important',
+  },
 });
 
 function GridItem({ ...props }: any) {

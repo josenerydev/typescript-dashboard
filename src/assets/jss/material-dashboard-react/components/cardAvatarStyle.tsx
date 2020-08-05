@@ -5,8 +5,8 @@ const cardAvatarStyle = createStyles({
   cardAvatar: {
     '&$cardAvatarProfile img': {
       width: '100%',
-      height: 'auto'
-    }
+      height: 'auto',
+    },
   },
   cardAvatarProfile: {
     maxWidth: '130px',
@@ -24,10 +24,10 @@ const cardAvatarStyle = createStyles({
       hexToRgb(blackColor) +
       ', 0.2)',
     '&$cardAvatarPlain': {
-      marginTop: '0'
-    }
+      marginTop: '0',
+    },
   },
-  cardAvatarPlain: {}
+  cardAvatarPlain: {},
 });
 
 export default cardAvatarStyle;
