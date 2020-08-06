@@ -31,21 +31,11 @@ class InfoState extends React.Component<Props> {
         <GridItem xs={12} sm={6} md={3}>
           <CardDashboard
             classes={classes}
-            icon={<Store />}
+            icon={<Icon>info_outline</Icon>}
             title="CASES"
             subtitle={infoState.datetime}
             value={infoState.cases}
-            type="success"
-          />
-        </GridItem>
-        <GridItem xs={12} sm={6} md={3}>
-          <CardDashboard
-            classes={classes}
-            icon={<Store />}
-            title="DEATHS"
-            subtitle="Last 24 Hours"
-            value={infoState.deaths}
-            type="success"
+            type="danger"
           />
         </GridItem>
         <GridItem xs={12} sm={6} md={3}>
@@ -53,7 +43,7 @@ class InfoState extends React.Component<Props> {
             classes={classes}
             icon={<Icon>info_outline</Icon>}
             title="SUSPECTS"
-            subtitle="Last 24 Hours"
+            subtitle={infoState.datetime}
             value={infoState.suspects}
             type="warning"
           />
@@ -63,9 +53,19 @@ class InfoState extends React.Component<Props> {
             classes={classes}
             icon={<Store />}
             title="REFUSES"
-            subtitle="Last 24 Hours"
+            subtitle={infoState.datetime}
             value={infoState.refuses}
-            type="success"
+            type="info"
+          />
+        </GridItem>
+        <GridItem xs={12} sm={6} md={3}>
+          <CardDashboard
+            classes={classes}
+            icon={<Store />}
+            title="DEATHS"
+            subtitle={infoState.datetime}
+            value={infoState.deaths}
+            type="primary"
           />
         </GridItem>
       </React.Fragment>
