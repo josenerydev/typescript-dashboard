@@ -58,6 +58,7 @@ interface State {
   messageSuccess: boolean;
   messageFailed: boolean;
   responseData: ResponseData[];
+  isLoading: boolean;
 }
 
 interface ResponseData {
@@ -80,6 +81,7 @@ class Dashboard extends React.Component<Props, State> {
       messageSuccess: true,
       messageFailed: true,
       responseData: [],
+      isLoading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -93,11 +95,13 @@ class Dashboard extends React.Component<Props, State> {
   };
 
   async fetchStates() {
+    this.setState({ isLoading: true });
     await Axios.get<ResponseData[]>(
       'https://covid19-brazil-api.now.sh/api/report/v1',
     )
       .then(response => {
         this.setState({ responseData: response.data });
+        this.setState({ isLoading: false });
       })
       .catch(err => console.error(err));
   }
@@ -108,11 +112,25 @@ class Dashboard extends React.Component<Props, State> {
 
   render() {
     const { classes } = this.props;
-    const { creatingMessage, messageFailed, messageSuccess } = this.state;
+    const {
+      creatingMessage,
+      messageFailed,
+      messageSuccess,
+      responseData,
+      isLoading,
+    } = this.state;
     return (
       <div>
         <GridContainer>
-          <SelectState classes={classes} />
+          {isLoading ? (
+            <p>Carregando...</p>
+          ) : (
+            <SelectState
+              classes={classes}
+              statesKeyValue={[{ id: 1, name: 'São Paulo' }]}
+            />
+          )}
+
           <GridItem xs={12} sm={6} md={3}>
             <CardDashboard
               classes={classes}

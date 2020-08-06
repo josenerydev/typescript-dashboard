@@ -10,6 +10,10 @@ import {
 
 interface Props {
   classes: any;
+  statesKeyValue: {
+    id: number;
+    name: string;
+  }[];
 }
 
 interface State {
@@ -30,7 +34,7 @@ class SelectState extends React.Component<Props, State> {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, statesKeyValue } = this.props;
     const { selectedState } = this.state;
     return (
       <FormControl variant="outlined" className={classes.formControl}>
@@ -43,8 +47,13 @@ class SelectState extends React.Component<Props, State> {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
+          {statesKeyValue.map((item, index) => {
+            return (
+              <MenuItem value={item.id} key={index}>
+                {item.name}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
     );
