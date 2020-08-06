@@ -16,6 +16,7 @@ interface Props {
     name: string;
   }[];
   labelWidth: number;
+  onChange: (stateId: number) => void;
 }
 
 interface State {
@@ -33,8 +34,9 @@ class SelectState extends React.Component<Props, State> {
   private inputLabelRef = React.createRef<InputLabel>();
 
   handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = event.target.value;
-    this.setState({ selectedState: +value });
+    const value = +event.target.value;
+    this.setState({ selectedState: value });
+    this.props.onChange(value);
   };
 
   render() {

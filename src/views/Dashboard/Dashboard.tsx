@@ -59,6 +59,7 @@ interface State {
   messageFailed: boolean;
   statesData: StateData[];
   isLoading: boolean;
+  infoState: StateData | null;
 }
 
 interface StateData {
@@ -86,6 +87,17 @@ class Dashboard extends React.Component<Props, State> {
       messageFailed: true,
       isLoading: false,
       statesData: [],
+      infoState: null,
+      // infoState: {
+      //   cases: 0,
+      //   datetime: '',
+      //   deaths: 0,
+      //   refuses: 0,
+      //   state: '',
+      //   suspects: 0,
+      //   uf: '',
+      //   uid: 0,
+      // },
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -96,6 +108,17 @@ class Dashboard extends React.Component<Props, State> {
 
   handleChangeIndex = (index: number) => {
     this.setState({ value: index });
+  };
+
+  handleChangeSelectState = (stateId: number) => {
+    const [infoState] = this.state.statesData.filter(item => {
+      return item.uid === stateId;
+    });
+    if (infoState) {
+      this.setState({ infoState: infoState });
+    } else {
+      this.setState({ infoState: null });
+    }
   };
 
   fetchStates = async () => {
@@ -122,6 +145,7 @@ class Dashboard extends React.Component<Props, State> {
       messageSuccess,
       statesData,
       isLoading,
+      infoState,
     } = this.state;
     return (
       <div>
@@ -132,52 +156,59 @@ class Dashboard extends React.Component<Props, State> {
             <SelectState
               classes={classes}
               labelWidth={120}
+              onChange={this.handleChangeSelectState}
               statesKeyValue={statesData.map(item => {
                 return { id: item.uid, name: item.state };
               })}
             />
           )}
 
-          <GridItem xs={12} sm={6} md={3}>
-            <CardDashboard
-              classes={classes}
-              icon={<Store />}
-              title="Cases"
-              subtitle="Last 24 Hours"
-              value={500}
-              type="success"
-            />
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <CardDashboard
-              classes={classes}
-              icon={<Store />}
-              title="Cases"
-              subtitle="Last 24 Hours"
-              value={500}
-              type="success"
-            />
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <CardDashboard
-              classes={classes}
-              icon={<Icon>info_outline</Icon>}
-              title="Cases"
-              subtitle="Last 24 Hours"
-              value={500}
-              type="warning"
-            />
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <CardDashboard
-              classes={classes}
-              icon={<Store />}
-              title="Cases"
-              subtitle="Last 24 Hours"
-              value={500}
-              type="success"
-            />
-          </GridItem>
+          {infoState ? (
+            <>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardDashboard
+                  classes={classes}
+                  icon={<Store />}
+                  title="CASES"
+                  subtitle={infoState.datetime}
+                  value={infoState.cases}
+                  type="success"
+                />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardDashboard
+                  classes={classes}
+                  icon={<Store />}
+                  title="DEATHS"
+                  subtitle="Last 24 Hours"
+                  value={infoState.deaths}
+                  type="success"
+                />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardDashboard
+                  classes={classes}
+                  icon={<Icon>info_outline</Icon>}
+                  title="SUSPECTS"
+                  subtitle="Last 24 Hours"
+                  value={infoState.suspects}
+                  type="warning"
+                />
+              </GridItem>
+              <GridItem xs={12} sm={6} md={3}>
+                <CardDashboard
+                  classes={classes}
+                  icon={<Store />}
+                  title="REFUSES"
+                  subtitle="Last 24 Hours"
+                  value={infoState.refuses}
+                  type="success"
+                />
+              </GridItem>
+            </>
+          ) : (
+            <h1>SELECT A STATE</h1>
+          )}
         </GridContainer>
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
