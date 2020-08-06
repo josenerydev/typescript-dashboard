@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactDOM } from 'react';
 
 import {
   FormControl,
@@ -18,31 +18,43 @@ interface Props {
 
 interface State {
   selectedState: number;
+  labelWidth: number;
 }
 
 class SelectState extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+  constructor(props: Props, state: State) {
+    super(props, state);
     this.state = {
       selectedState: 0,
+      labelWidth: 0,
     };
   }
 
-  handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+  private inputLabelRef = React.createRef<InputLabel>();
+
+  handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    console.log(value);
-  }
+    this.setState({ selectedState: +value });
+  };
 
   render() {
     const { classes, statesKeyValue } = this.props;
     const { selectedState } = this.state;
     return (
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel>States</InputLabel>
+        <InputLabel ref={this.inputLabelRef} htmlFor="States">
+          States
+        </InputLabel>
         <Select
           value={selectedState}
           onChange={this.handleChange}
-          input={<OutlinedInput name="states" labelWidth={500} id="" />}
+          input={
+            <OutlinedInput
+              name="states"
+              labelWidth={this.state.labelWidth}
+              id="States"
+            />
+          }
         >
           <MenuItem value="">
             <em>None</em>
