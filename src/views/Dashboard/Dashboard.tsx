@@ -98,7 +98,7 @@ class Dashboard extends React.Component<Props, State> {
     this.setState({ value: index });
   };
 
-  async fetchStates() {
+  fetchStates = async () => {
     this.setState({ isLoading: true });
     await Axios.get<StatesResponseData>(
       'https://covid19-brazil-api.now.sh/api/report/v1',
@@ -108,11 +108,11 @@ class Dashboard extends React.Component<Props, State> {
         this.setState({ isLoading: false });
       })
       .catch(err => console.error(err));
-  }
+  };
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.fetchStates();
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -131,6 +131,7 @@ class Dashboard extends React.Component<Props, State> {
           ) : (
             <SelectState
               classes={classes}
+              labelWidth={120}
               statesKeyValue={statesData.map(item => {
                 return { id: item.uid, name: item.state };
               })}

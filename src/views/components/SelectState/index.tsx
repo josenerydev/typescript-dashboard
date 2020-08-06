@@ -1,4 +1,5 @@
-import React, { ReactDOM } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import {
   FormControl,
@@ -14,11 +15,11 @@ interface Props {
     id: number;
     name: string;
   }[];
+  labelWidth: number;
 }
 
 interface State {
   selectedState: number;
-  labelWidth: number;
 }
 
 class SelectState extends React.Component<Props, State> {
@@ -26,7 +27,6 @@ class SelectState extends React.Component<Props, State> {
     super(props, state);
     this.state = {
       selectedState: 0,
-      labelWidth: 0,
     };
   }
 
@@ -38,7 +38,7 @@ class SelectState extends React.Component<Props, State> {
   };
 
   render() {
-    const { classes, statesKeyValue } = this.props;
+    const { classes, statesKeyValue, labelWidth } = this.props;
     const { selectedState } = this.state;
     return (
       <FormControl variant="outlined" className={classes.formControl}>
@@ -49,11 +49,7 @@ class SelectState extends React.Component<Props, State> {
           value={selectedState}
           onChange={this.handleChange}
           input={
-            <OutlinedInput
-              name="states"
-              labelWidth={this.state.labelWidth}
-              id="States"
-            />
+            <OutlinedInput name="states" labelWidth={labelWidth} id="States" />
           }
         >
           <MenuItem value="">
