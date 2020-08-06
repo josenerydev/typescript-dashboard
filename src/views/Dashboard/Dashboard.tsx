@@ -43,6 +43,7 @@ import dashboardStyle from '../../assets/jss/material-dashboard-react/views/dash
 import CustomInput from '../../components/CustomInput/CustomInput';
 import { InputLabel } from '@material-ui/core';
 import Success from '../../components/Typography/Success';
+import Axios from 'axios';
 
 import CardDashboard from '../components/CardDashboard';
 import SelectState from '../components/SelectState';
@@ -56,6 +57,18 @@ interface State {
   creatingMessage: boolean;
   messageSuccess: boolean;
   messageFailed: boolean;
+  responseData: ResponseData[];
+}
+
+interface ResponseData {
+  uid: number;
+  uf: string;
+  state: string;
+  cases: number;
+  deaths: number;
+  suspects: number;
+  refuses: number;
+  datetime: string;
 }
 
 class Dashboard extends React.Component<Props, State> {
@@ -66,6 +79,7 @@ class Dashboard extends React.Component<Props, State> {
       creatingMessage: false,
       messageSuccess: true,
       messageFailed: true,
+      responseData: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -77,6 +91,20 @@ class Dashboard extends React.Component<Props, State> {
   handleChangeIndex = (index: number) => {
     this.setState({ value: index });
   };
+
+  async fetchStates() {
+    await Axios.get<ResponseData[]>(
+      'https://covid19-brazil-api.now.sh/api/report/v1',
+    )
+      .then(response => {
+        this.setState({ responseData: response.data });
+      })
+      .catch(err => console.error(err));
+  }
+
+  componentDidMount() {
+    this.fetchStates();
+  }
 
   render() {
     const { classes } = this.props;
