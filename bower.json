@@ -1,9 +1,7 @@
 {
   "name": "material-dashboard-react",
   "homepage": "https://github.com/creativetimofficial/material-dashboard-react",
-  "authors": [
-    "creative-tim"
-  ],
+  "authors": ["creative-tim"],
   "description": "",
   "main": "public/index.html",
   "keywords": [

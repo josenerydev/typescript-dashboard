@@ -37,7 +37,7 @@ function RegularButton({ ...props }: any) {
     [classes.link]: link,
     [classes.justIcon]: justIcon,
     [classes[variant]]: variant,
-    [className]: className
+    [className]: className,
   });
 
   return (

@@ -51,7 +51,7 @@ function CustomTable({ ...props }: any) {
 }
 
 CustomTable.defaultProps = {
-  tableHeaderColor: 'gray'
+  tableHeaderColor: 'gray',
 };
 
 export default withStyles(tableStyle)(CustomTable);

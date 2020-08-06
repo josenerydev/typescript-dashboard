@@ -15,7 +15,7 @@ function CardAvatar({ ...props }: any) {
     [classes.cardAvatar]: true,
     [classes.cardAvatarProfile]: profile,
     [classes.cardAvatarPlain]: plain,
-    [className]: className !== undefined
+    [className]: className !== undefined,
   });
   return (
     <div className={cardAvatarClasses} {...rest}>

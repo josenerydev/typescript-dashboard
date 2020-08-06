@@ -31,14 +31,14 @@ class CustomTabs extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      value: 0
+      value: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (event: any, value: number) => {
     this.setState({ value });
-  }
+  };
 
   render() {
     const {
@@ -47,11 +47,11 @@ class CustomTabs extends React.Component<Props, State> {
       plainTabs,
       tabs,
       title,
-      rtlActive
+      rtlActive,
     } = this.props;
     const cardTitle = classNames({
       [classes.cardTitle]: true,
-      [classes.cardTitleRTL]: rtlActive
+      [classes.cardTitleRTL]: rtlActive,
     });
     return (
       <Card plain={plainTabs}>
@@ -65,7 +65,7 @@ class CustomTabs extends React.Component<Props, State> {
             classes={{
               root: classes.tabsRoot,
               indicator: classes.displayNone,
-              scrollButtons: classes.displayNone
+              scrollButtons: classes.displayNone,
             }}
             variant="scrollable"
             scrollButtons="auto"
@@ -74,7 +74,7 @@ class CustomTabs extends React.Component<Props, State> {
               var icon = {};
               if (prop.tabIcon) {
                 icon = {
-                  icon: <prop.tabIcon />
+                  icon: <prop.tabIcon />,
                 };
               }
               return (
@@ -84,7 +84,7 @@ class CustomTabs extends React.Component<Props, State> {
                     labelContainer: classes.tabLabelContainer,
                     label: classes.tabLabel,
                     selected: classes.tabSelected,
-                    wrapper: classes.tabWrapper
+                    wrapper: classes.tabWrapper,
                   }}
                   key={key}
                   label={prop.tabName}

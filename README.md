@@ -17,9 +17,9 @@ Se ainda não estiver no Slack, você pode visitar [https://devjf.herokuapp.com/
 Para iniciar o projeto, primeiro é necessária a instalação de um dos seguintes gerenciadores de dependências.
 
 - [**NodeJs**](https://nodejs.org/en/)
-  
+
   Se ainda não tiver uma versão instalada, você pode baixar na [página de downloads](https://nodejs.org/en/download/). Recomendamos usar a versão `LTS` para evitar problemas de compatibilidade com algumas dependências.
-  
+
   Para verificar se o node já está funcionando, rode o seguinte comando no seu terminal:
 
   ```sh
@@ -45,7 +45,7 @@ Para iniciar o projeto, primeiro é necessária a instalação de um dos seguint
 - [**Compilador TypeScript**](https://www.typescriptlang.org/)
 
   Durante o desenvolvimento do projeto usaremos o compilador do TypeScript para converter nosso código em JavaScript.
-  
+
   Para instalar, basta rodar o comando:
 
   ```sh
@@ -59,7 +59,7 @@ Para iniciar o projeto, primeiro é necessária a instalação de um dos seguint
   ```
 
   Para confirmar que está tudo funcionando, rode o seguinte comando no seu terminal:
-  
+
   ```sh
   tsc --version
   ```
@@ -80,7 +80,7 @@ Se seu editor não estiver na lista ou não tiver nenhum instalado, recomendados
 4. Após instalar as depenências execute o projeto usando:
    - `npm start` para se estiver usando o NPM.
    - `yarn start` para Yarn.
-  
+
 ## Conteúdo para estudo
 
 ### Typescript
@@ -95,7 +95,7 @@ Se seu editor não estiver na lista ou não tiver nenhum instalado, recomendados
 - [Estado e Ciclo de Vida](https://pt-br.reactjs.org/docs/state-and-lifecycle.html)
 - [Roteamento com React Router Dom](https://blog.rocketseat.com.br/paginacao-react-router/)
 - [Tipando em Componentes](https://medium.com/@oieduardorabelo/react-e-typescript-o-dilema-defaultprops-4711e0e6f271)
-  
+
 ### Apis de Exemplo
 
 - [Covid19 Brazil API](https://covid19-brazil-api-docs.now.sh/)

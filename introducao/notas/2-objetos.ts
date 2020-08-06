@@ -37,9 +37,9 @@
  * # UNIÃO E INTERSECÇÃO DE TIPOS
  */
 
- /**
-  * Algumas variaveis pode assumir pode representar mais de uma coisa, usamos a intersecção dos tipos com `|`
-  */
+/**
+ * Algumas variaveis pode assumir pode representar mais de uma coisa, usamos a intersecção dos tipos com `|`
+ */
 // interface ContatoEmail {
 //   nome: string;
 //   email: string;
@@ -51,7 +51,6 @@
 // }
 
 // let contato: ContatoEmail | ContatoTelefone;
-
 
 /**
  * Também é possível que uma variável implemente mais de um tipo ao mesmo tempo, usamos `&`

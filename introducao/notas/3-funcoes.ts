@@ -2,9 +2,9 @@
  * # FUNÇÕES
  */
 
- /**
-  * Declarando tipo dos parametros
-  */
+/**
+ * Declarando tipo dos parametros
+ */
 //  function soma(a: number, b: number) {
 //    return a + b;
 //  }
@@ -13,9 +13,9 @@
 //    return a + b;
 //  }
 
- /**
-  * Definindo tipo de retorno manualmente
-  */
+/**
+ * Definindo tipo de retorno manualmente
+ */
 //  const fatorial = (a: number) => {
 //    if (a < 0) return 1;
 
