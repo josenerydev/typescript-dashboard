@@ -44,6 +44,8 @@ import CustomInput from '../../components/CustomInput/CustomInput';
 import { InputLabel } from '@material-ui/core';
 import Success from '../../components/Typography/Success';
 
+import CardDashboard from '../components/CardDashboard';
+
 interface Props {
   classes: any;
 }
@@ -82,78 +84,44 @@ class Dashboard extends React.Component<Props, State> {
       <div>
         <GridContainer>
           <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="success" stats={true} icon={true}>
-                <CardIcon color="success">
-                  <Store />
-                </CardIcon>
-                <p className={classes.cardCategory}>Revenue</p>
-                <h3 className={classes.cardTitle}>$34,245</h3>
-              </CardHeader>
-              <CardFooter stats={true}>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
-                </div>
-              </CardFooter>
-            </Card>
+            <CardDashboard
+              classes={classes}
+              icon={<Store />}
+              title="Cases"
+              subtitle="Last 24 Hours"
+              value={500}
+              type="success"
+            />
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="warning" stats={true} icon={true}>
-                <CardIcon color="warning">
-                  <Icon>content_copy</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Used Space</p>
-                <h3 className={classes.cardTitle}>
-                  49/50 <small>GB</small>
-                </h3>
-              </CardHeader>
-              <CardFooter stats={true}>
-                <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                    Get more space
-                  </a>
-                </div>
-              </CardFooter>
-            </Card>
+            <CardDashboard
+              classes={classes}
+              icon={<Store />}
+              title="Cases"
+              subtitle="Last 24 Hours"
+              value={500}
+              type="success"
+            />
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="danger" stats={true} icon={true}>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
-              </CardHeader>
-              <CardFooter stats={true}>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
-                </div>
-              </CardFooter>
-            </Card>
+            <CardDashboard
+              classes={classes}
+              icon={<Icon>info_outline</Icon>}
+              title="Cases"
+              subtitle="Last 24 Hours"
+              value={500}
+              type="warning"
+            />
           </GridItem>
           <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="info" stats={true} icon={true}>
-                <CardIcon color="info">
-                  <Accessibility />
-                </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
-              </CardHeader>
-              <CardFooter stats={true}>
-                <div className={classes.stats}>
-                  <Update />
-                  Just Updated
-                </div>
-              </CardFooter>
-            </Card>
+            <CardDashboard
+              classes={classes}
+              icon={<Store />}
+              title="Cases"
+              subtitle="Last 24 Hours"
+              value={500}
+              type="success"
+            />
           </GridItem>
         </GridContainer>
         <GridContainer>
