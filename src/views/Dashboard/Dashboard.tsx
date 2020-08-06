@@ -61,6 +61,7 @@ interface State {
   statesData: StateData[];
   isLoading: boolean;
   infoState: StateData | null;
+  lastUpdate: Date | string;
 }
 
 interface StateData {
@@ -89,6 +90,7 @@ class Dashboard extends React.Component<Props, State> {
       isLoading: false,
       statesData: [],
       infoState: null,
+      lastUpdate: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -119,6 +121,7 @@ class Dashboard extends React.Component<Props, State> {
     )
       .then(response => {
         this.setState({ statesData: response.data.data });
+        this.setState({ lastUpdate: response.data.data[0].datetime });
         this.setState({ isLoading: false });
       })
       .catch(err => console.error(err));
@@ -137,6 +140,7 @@ class Dashboard extends React.Component<Props, State> {
       statesData,
       isLoading,
       infoState,
+      lastUpdate,
     } = this.state;
     return (
       <div>
@@ -161,7 +165,7 @@ class Dashboard extends React.Component<Props, State> {
           )}
         </GridContainer>
         <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
+          {/* <GridItem xs={12} sm={12} md={4}>
             <Card chart={true}>
               <CardHeader color="success">
                 <ChartistGraph
@@ -185,30 +189,37 @@ class Dashboard extends React.Component<Props, State> {
                 </div>
               </CardFooter>
             </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart={true}>
-              <CardHeader color="warning">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={emailsSubscriptionChart.data}
-                  type="Bar"
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart={true}>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
+          </GridItem> */}
+          {isLoading ? (
+            <p>Carregando...</p>
+          ) : (
+            <GridItem xs={12} sm={12} md={12}>
+              <Card chart={true}>
+                <CardHeader color="danger">
+                  <ChartistGraph
+                    className="ct-chart"
+                    data={{
+                      labels: statesData.map(item => item.uf),
+                      series: [statesData.map(item => item.cases)],
+                    }}
+                    type="Bar"
+                  />
+                </CardHeader>
+                <CardBody>
+                  <h4 className={classes.cardTitle}>Cases in Brazil</h4>
+                  <p className={classes.cardCategory}>
+                    Last Update: {lastUpdate}
+                  </p>
+                </CardBody>
+                <CardFooter chart={true}>
+                  <div className={classes.stats}>
+                    <AccessTime /> campaign sent 2 days ago
+                  </div>
+                </CardFooter>
+              </Card>
+            </GridItem>
+          )}
+          {/* <GridItem xs={12} sm={12} md={4}>
             <Card chart={true}>
               <CardHeader color="danger">
                 <ChartistGraph
@@ -229,7 +240,7 @@ class Dashboard extends React.Component<Props, State> {
                 </div>
               </CardFooter>
             </Card>
-          </GridItem>
+          </GridItem> */}
         </GridContainer>
         <GridContainer>
           <GridItem xs={12} sm={12} md={6}>
