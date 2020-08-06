@@ -57,11 +57,11 @@ interface State {
   creatingMessage: boolean;
   messageSuccess: boolean;
   messageFailed: boolean;
-  responseData: ResponseData[];
+  statesData: StateData[];
   isLoading: boolean;
 }
 
-interface ResponseData {
+interface StateData {
   uid: number;
   uf: string;
   state: string;
@@ -72,6 +72,10 @@ interface ResponseData {
   datetime: string;
 }
 
+interface StatesResponseData {
+  data: StateData[];
+}
+
 class Dashboard extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -80,8 +84,8 @@ class Dashboard extends React.Component<Props, State> {
       creatingMessage: false,
       messageSuccess: true,
       messageFailed: true,
-      responseData: [],
       isLoading: false,
+      statesData: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -96,11 +100,11 @@ class Dashboard extends React.Component<Props, State> {
 
   async fetchStates() {
     this.setState({ isLoading: true });
-    await Axios.get<ResponseData[]>(
+    await Axios.get<StatesResponseData>(
       'https://covid19-brazil-api.now.sh/api/report/v1',
     )
       .then(response => {
-        this.setState({ responseData: response.data });
+        this.setState({ statesData: response.data.data });
         this.setState({ isLoading: false });
       })
       .catch(err => console.error(err));
@@ -116,7 +120,7 @@ class Dashboard extends React.Component<Props, State> {
       creatingMessage,
       messageFailed,
       messageSuccess,
-      responseData,
+      statesData,
       isLoading,
     } = this.state;
     return (
@@ -127,7 +131,9 @@ class Dashboard extends React.Component<Props, State> {
           ) : (
             <SelectState
               classes={classes}
-              statesKeyValue={[{ id: 1, name: 'São Paulo' }]}
+              statesKeyValue={statesData.map(item => {
+                return { id: item.uid, name: item.state };
+              })}
             />
           )}
 
