@@ -47,6 +47,7 @@ import Axios from 'axios';
 
 import CardDashboard from '../components/CardDashboard';
 import SelectState from '../components/SelectState';
+import InfoState from '../components/InfoState';
 
 interface Props {
   classes: any;
@@ -88,16 +89,6 @@ class Dashboard extends React.Component<Props, State> {
       isLoading: false,
       statesData: [],
       infoState: null,
-      // infoState: {
-      //   cases: 0,
-      //   datetime: '',
-      //   deaths: 0,
-      //   refuses: 0,
-      //   state: '',
-      //   suspects: 0,
-      //   uf: '',
-      //   uid: 0,
-      // },
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeIndex = this.handleChangeIndex.bind(this);
@@ -164,48 +155,7 @@ class Dashboard extends React.Component<Props, State> {
           )}
 
           {infoState ? (
-            <>
-              <GridItem xs={12} sm={6} md={3}>
-                <CardDashboard
-                  classes={classes}
-                  icon={<Store />}
-                  title="CASES"
-                  subtitle={infoState.datetime}
-                  value={infoState.cases}
-                  type="success"
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} md={3}>
-                <CardDashboard
-                  classes={classes}
-                  icon={<Store />}
-                  title="DEATHS"
-                  subtitle="Last 24 Hours"
-                  value={infoState.deaths}
-                  type="success"
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} md={3}>
-                <CardDashboard
-                  classes={classes}
-                  icon={<Icon>info_outline</Icon>}
-                  title="SUSPECTS"
-                  subtitle="Last 24 Hours"
-                  value={infoState.suspects}
-                  type="warning"
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} md={3}>
-                <CardDashboard
-                  classes={classes}
-                  icon={<Store />}
-                  title="REFUSES"
-                  subtitle="Last 24 Hours"
-                  value={infoState.refuses}
-                  type="success"
-                />
-              </GridItem>
-            </>
+            <InfoState classes={classes} infoState={infoState} />
           ) : (
             <h1>SELECT A STATE</h1>
           )}
