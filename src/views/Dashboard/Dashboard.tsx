@@ -45,6 +45,7 @@ import { InputLabel } from '@material-ui/core';
 import Success from '../../components/Typography/Success';
 
 import CardDashboard from '../components/CardDashboard';
+import SelectState from '../components/SelectState';
 
 interface Props {
   classes: any;
@@ -83,6 +84,7 @@ class Dashboard extends React.Component<Props, State> {
     return (
       <div>
         <GridContainer>
+          <SelectState classes={classes} />
           <GridItem xs={12} sm={6} md={3}>
             <CardDashboard
               classes={classes}
